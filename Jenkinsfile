@@ -11,7 +11,9 @@ pipeline {
         }
         stage('Test') {
             steps {
+            sh '''
             docker run -d -p 8080:80 hello-world:1.0
+            '''
             }
         }
     }
