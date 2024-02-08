@@ -1,25 +1,32 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('*****')
+    }
+
     stages {
         stage('Build') {
             steps {
                 sh '''
-                docker build -t hello-world:1.0 .
-                docker container create --name hello-world -p 8090:80 hello-world:1.0
+                docker build -t albadriyano/hello-world:1.0 .
+                docker container create --name hello-world-1 -p 8091:80 albadriyano/hello-world:1.0
                 '''
             }
         }
         stage('Test') {
             steps {
             sh '''
-            docker start hello-world
+            docker start hello-world-1
             '''
             }
         }
         stage('Release') {
             steps {
-                echo'release'
+                sh '''
+                    // docker tag hello-world:1.0 albadriyano/hello-world:1.0
+                    docker push albadriyano/hello-world:1.0
+                '''
             }
         }
         stage('Deploy'){
