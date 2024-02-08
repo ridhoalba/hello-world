@@ -20,7 +20,9 @@ pipeline {
 
         stage('Release') {
             steps {
-                echo'Release..'
+                sh '''
+                    docker push albadriyano/hello-world:1.0
+                '''
             }
         }
 
