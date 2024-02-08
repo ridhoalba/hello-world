@@ -19,7 +19,7 @@ pipeline {
             // sh '''
             // docker start hello-world-1
             // '''
-            // }
+            }
         }
         stage('Release') {
             steps {
