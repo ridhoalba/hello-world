@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                docker build hello-world:1.0
+                docker build hello-world:1.0 .
                 docker container create --name hello-world -p 8090:80 hello-world:1.0
                 '''
             }
