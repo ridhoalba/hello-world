@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
             sh '''
-            docker run -d -p 8080:80 hello-world:1.0
+            docker run -d -p 90:80 hello-world:1.0
             '''
             }
         }
