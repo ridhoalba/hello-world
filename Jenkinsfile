@@ -17,6 +17,21 @@ pipeline {
             '''
             }
         }
+        stage('Release') {
+            steps {
+                echo'release'
+            }
+        }
+        stage('Deploy'){
+            steps {
+                echo'deploy'
+            }
+        }
+        stage('Monitor') {
+            steps {
+                echo'monitor'
+            }
+        }
     }
     post {
         success {
