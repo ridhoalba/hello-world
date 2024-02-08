@@ -2,6 +2,20 @@ pipeline {
     agent any
 
     stages {
+        stage('Check Image') {
+            steps {
+                script {
+                    def dockerImageExists = sh(script: "docker image ls | grep hello-world", returnStatus: true)
+                    if (dockerImageExists == 0) {
+                        echo 'Image exists. Skipping build stage.'
+                        currentBuild.result = 'SUCCESS'
+                        error('Image already exists. Skipping build stage.')
+                    } else {
+                        echo 'Image does not exist. Proceeding to build stage.'
+                    }
+                }
+            }
+        }
         stage('Build') {
             steps {
                 sh '''
