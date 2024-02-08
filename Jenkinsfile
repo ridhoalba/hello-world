@@ -12,6 +12,7 @@ pipeline {
                 // docker build -t albadriyano/hello-world:1.0 .
                 // docker container create --name hello-world-1 -p 8091:80 albadriyano/hello-world:1.0
                 // '''
+                echo'build'
             }
         }
         stage('Test') {
@@ -19,6 +20,7 @@ pipeline {
             // sh '''
             // docker start hello-world-1
             // '''
+            echo'test'
             }
         }
         stage('Release') {
